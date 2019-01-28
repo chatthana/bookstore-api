@@ -1,0 +1,19 @@
+const express = require('express');
+const logger = require('morgan');
+
+module.exports = ({ config, router }) => {
+  const app = express();
+
+  app.use(logger('dev'));
+  app.use(router);
+
+  return {
+    app,
+    run: () => Promise.resolve().then(() => {
+      const http = app.listen(config.port, () => {
+        const { port } = http.address();
+        console.log(`🤘 The API is initialised on the port ${port}`);
+      });
+    })
+  };
+}
