@@ -5,6 +5,8 @@ const BookSchema = Schema({
   book_name: String,
   author_name: String,
   price: Number
+}, {
+  versionKey: false
 });
 
 module.exports = model('Book', BookSchema);
