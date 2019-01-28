@@ -1,0 +1,16 @@
+{
+  "name": "bookstore",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "awilix": "^4.2.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.7",
+    "morgan": "^1.9.1",
+    "ramda": "^0.26.1",
+    "tcomb": "^3.2.29",
+    "winston": "^3.2.0"
+  }
+}
