@@ -1,7 +1,6 @@
 const t = require('tcomb');
-const { compose, complement, pickBy, isNil } = require('ramda');
-
-const cleaned = entity => pickBy(compose(complement(isNil)), entity);
+const { compose } = require('ramda');
+const { cleaned } = require('../utilities');
 
 const Book = t.struct({
   id: t.Number,
@@ -10,5 +9,5 @@ const Book = t.struct({
   price: t.Number
 });
 
-module.exports = compose(cleaned, Book);
+module.exports = compose(cleaned, Book)
 
