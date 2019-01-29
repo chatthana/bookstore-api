@@ -1,12 +1,27 @@
 const { Router } = require('express');
 const container = require('../../../../container');
 const userRepository = require('../../../../infrastructure/repositories/book');
+const { get } = require('../../../../app/book');
+const { compose } = require('ramda');
 
 module.exports = () => {
   const router = Router();
 
+  const { db } = container.cradle;
+
+  const useCase = compose(userRepository)(db.models.Book);
+
+  const getUseCase = get({ userRepository: useCase });
+
   router.get('/', (req, res) => {
-    res.send('OKAY');
+    getUseCase.all((req, res))
+    .then(books => {
+      res.json({
+        status: '000',
+        message: 'Success',
+        data: books
+      });
+    });
   });
 
   return router;
