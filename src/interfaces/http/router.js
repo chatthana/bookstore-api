@@ -12,6 +12,7 @@ module.exports = ({ config }) => {
 
   apiRouter.use(cors()).use(bodyParser.json());
 
+  apiRouter.use('/', buildController('index'));
   apiRouter.use('/users', buildController('user'));
   apiRouter.use('/books', buildController('book'));
   apiRouter.use('/login', buildController('login'));

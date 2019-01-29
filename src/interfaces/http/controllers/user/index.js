@@ -21,6 +21,30 @@ module.exports = () => {
   const destroyUseCase = destroy({ userRepository: useCase });
   const placeOrderUseCase = placeOrder({ orderRepository: orderUseCase, bookRepository: bookUseCase});
   
+  /**
+ * @swagger
+ * /api/v1/users:
+ *   post:
+ *     tags:
+ *       - Users
+ *     description: User Authentication Endpoint
+ *     security:
+ *       - Bearer: []
+ *     produces:
+ *      - application/json
+ *     parameters:
+ *      - in: body
+ *        name: body
+ *        description: User Body
+ *        required: true
+ *     responses:
+ *       200:
+ *         description: Token
+ *         schema:
+ *           type: array
+ *       502:
+ *         description: Error
+ */
   router.post('/', (req, res) => {
     postUseCase.create({ requestBody: req.body })
     .then(response => {
@@ -39,6 +63,26 @@ module.exports = () => {
 
   router.use(authenticator.authenticate());
 
+  /**
+ * @swagger
+ * /api/v1/users:
+ *   get:
+ *     tags:
+ *       - Users
+ *     description: Current user
+ *     security:
+ *       - JWT: []
+ *     properties:
+ *      username:
+ *        type: string
+ *      password:
+ *        type: string
+ *     responses:
+ *       200:
+ *         description: Token
+ *         schema:
+ *           type: array
+ */
   router.get('/', (req, res) => {
     getUseCase.get({ guid: req.user.guid })
     .then(user => {
@@ -56,6 +100,30 @@ module.exports = () => {
     });
   });
 
+ /**
+ * @swagger
+ * /api/v1/users:
+ *   post:
+ *     tags:
+ *       - Users
+ *     description: Order endpoint
+ *     security:
+ *       - JWT: []
+ *     parameters:
+ *       - name: username
+ *         required: true
+ *         type: string
+ *       - name: password
+ *         required: true
+ *         type: string
+ *     responses:
+ *       200:
+ *         description: Token
+ *         schema:
+ *           type: array
+ *       502:
+ *         description: Error
+ */
   router.post('/orders', (req, res) => {
     placeOrderUseCase.placeOrder({ user_id: req.user.guid, book_ids: req.body.book_ids })
       .then(response => {
@@ -72,6 +140,24 @@ module.exports = () => {
         })
       });
   });
+
+   /**
+ * @swagger
+ * /api/v1/users:
+ *   delete:
+ *     tags:
+ *       - Users
+ *     description: Delete user
+ *     security:
+ *       - JWT: []
+ *     responses:
+ *       200:
+ *         description: Token
+ *         schema:
+ *           type: array
+ *       502:
+ *         description: Error
+ */
 
   router.delete('/', (req, res) => {
     destroyUseCase.destroy({ guid: req.user.guid })

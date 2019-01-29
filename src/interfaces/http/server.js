@@ -6,6 +6,7 @@ module.exports = ({ config, router, authenticator }) => {
 
   app.use(logger('dev'));
   app.use(authenticator.initialise());
+  app.use(express.static('public'));
   app.use(router);
 
   app.use((req, res, next) => {
@@ -23,4 +24,4 @@ module.exports = ({ config, router, authenticator }) => {
       });
     })
   };
-}
+};
