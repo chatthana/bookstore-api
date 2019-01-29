@@ -19,7 +19,7 @@ module.exports = () => {
   const getUseCase = get({ userRepository: useCase });
   const postUseCase = post({ userRepository: useCase });
   const destroyUseCase = destroy({ userRepository: useCase });
-  const placeOrderUseCase = placeOrder({ userRepository: useCase, orderRepository: orderUseCase, bookRepository: bookUseCase});
+  const placeOrderUseCase = placeOrder({ orderRepository: orderUseCase, bookRepository: bookUseCase});
   
   router.post('/', (req, res) => {
     postUseCase.create({ requestBody: req.body })

@@ -15,7 +15,6 @@ module.exports = ({ config }) => {
   apiRouter.use('/users', buildController('user'));
   apiRouter.use('/books', buildController('book'));
   apiRouter.use('/login', buildController('login'));
-  apiRouter.use('/orders', buildController('order'));
 
   router.use(`/api/v${config.apiVersion}`, apiRouter);
 

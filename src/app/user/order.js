@@ -1,7 +1,7 @@
 const uuid = require('uuid/v4');
 const OrderEntity = require('../../domain/order');
 
-module.exports = ({ userRepository, orderRepository, bookRepository }) => {
+module.exports = ({ orderRepository, bookRepository }) => {
   const placeOrder = ({ user_id, book_ids }) => {
     return new Promise(async (resolve, reject) => {
       try {

@@ -8,6 +8,12 @@ module.exports = ({ config, router, authenticator }) => {
   app.use(authenticator.initialise());
   app.use(router);
 
+  app.use((req, res, next) => {
+    return res.status(404).json({
+      message: 'Not found'
+    });
+  });
+
   return {
     app,
     run: () => Promise.resolve().then(() => {
