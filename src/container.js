@@ -7,6 +7,7 @@ const Database = require('./infrastructure/database');
 const Router = require('./interfaces/http/router');
 const Server = require('./interfaces/http/server');
 const Tokeniser = require('./infrastructure/tokeniser');
+const Authenticator = require('./interfaces/http/middlewares/auth');
 
 const container = createContainer();
 
@@ -16,6 +17,7 @@ container.register({
   router: asFunction(Router).singleton(),
   server: asFunction(Server).singleton(),
   tokeniser: asFunction(Tokeniser).singleton(),
+  authenticator: asFunction(Authenticator).singleton(),
   config: asValue(Config)
 });
 

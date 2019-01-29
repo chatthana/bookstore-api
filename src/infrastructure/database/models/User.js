@@ -1,8 +1,13 @@
 const { Schema, model } = require('mongoose');
 
 const UserSchema = Schema({
+  guid: String,
+  name: String,
+  surname: String,
   username: String,
-  password: String,
+  email: String,
+  passwordHash: String,
+  passwordSalt: String,
   date_of_birth: String
 }, {
   versionKey: false
