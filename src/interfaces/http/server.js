@@ -1,10 +1,11 @@
 const express = require('express');
 const logger = require('morgan');
 
-module.exports = ({ config, router }) => {
+module.exports = ({ config, router, authenticator }) => {
   const app = express();
 
   app.use(logger('dev'));
+  app.use(authenticator.initialise());
   app.use(router);
 
   return {

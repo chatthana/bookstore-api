@@ -7,11 +7,13 @@ const { compose } = require('ramda');
 module.exports = () => {
   const router = Router();
 
-  const { db } = container.cradle;
+  const { db, authenticator } = container.cradle;
 
   const useCase = compose(userRepository)(db.models.Book);
 
   const getUseCase = get({ userRepository: useCase });
+
+  router.use(authenticator.authenticate());
 
   router.get('/', (req, res) => {
     getUseCase.all((req, res))

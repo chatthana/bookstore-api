@@ -1,4 +1,4 @@
-module.exports = ({ server }) => {
+module.exports = ({ server, authenticator }) => {
   return {
     start: () =>
       Promise.resolve()
