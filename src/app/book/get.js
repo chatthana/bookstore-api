@@ -1,8 +1,12 @@
-module.exports = ({ userRepository }) => {
+const { transferSort } = require('./helper');
+
+module.exports = ({ bookRepository }) => {
   const all = () => Promise
     .resolve()
     .then(() => {
-      return userRepository.getAll();
+      return bookRepository.getAll();
+    }).then(books => {
+      return transferSort(books);
     }).catch(error => {
       throw new Error(error);
     });

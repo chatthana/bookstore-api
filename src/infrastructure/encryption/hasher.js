@@ -5,11 +5,9 @@ const generateSalt = length =>
   .toString('hex')
   .slice(0, length);
 
-const test = plainPassword => {
+module.exports = plainPassword => {
   const salt = generateSalt(128);
   const hash = crypto.createHmac('sha512', salt);
   hash.update(plainPassword);
   return { hashed: hash.digest('hex'), salt };
-}
-
-console.log(test('secret'));
+};

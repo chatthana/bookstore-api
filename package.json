@@ -5,6 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "awilix": "^4.2.0",
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "express": "^4.16.4",
@@ -15,6 +16,7 @@
     "passport-jwt": "^4.0.0",
     "ramda": "^0.26.1",
     "tcomb": "^3.2.29",
+    "uuid": "^3.3.2",
     "winston": "^3.2.0"
   }
 }
