@@ -8,8 +8,8 @@ const User = t.struct({
   surname: t.String,
   username: t.String,
   email: t.String,
-  passwordHash: t.String,
-  passwordSalt: t.String,
+  passwordHash: t.maybe(t.String),
+  passwordSalt: t.maybe(t.String),
   date_of_birth: t.String
 });
 
