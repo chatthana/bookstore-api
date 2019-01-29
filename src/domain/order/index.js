@@ -5,7 +5,7 @@ const OrderItem = require('./OrderItem');
 
 const Order = t.struct({
   guid: t.String,
-  user_id: t.Number,
+  user_id: t.String,
   items: t.Array
 });
 

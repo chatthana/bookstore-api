@@ -8,13 +8,12 @@ module.exports = ({ config, db }) => {
 
   const authParams = {
     secretOrKey: Buffer.from(config.authentication.jwt.publicKey, 'base64').toString('ascii'),
-    jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('jwt')
+    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken()
   };
-
 
   const strategy = new Strategy(authParams, (payload, done) => {
     const useCase = compose(userRepository)(db.models.User);
-    useCase.getById(payload.id)
+    useCase.getOne({ guid: payload.guid })
     .then(user => {
       done(null, user);
     }).catch(error => {

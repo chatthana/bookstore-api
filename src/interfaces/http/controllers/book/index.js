@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const container = require('../../../../container');
-const userRepository = require('../../../../infrastructure/repositories/book');
+const bookRepository = require('../../../../infrastructure/repositories/book');
+const bookWebService = require('../../../../infrastructure/web_services/book');
 const { get } = require('../../../../app/book');
 const { compose } = require('ramda');
 
@@ -9,19 +10,23 @@ module.exports = () => {
 
   const { db, authenticator } = container.cradle;
 
-  const useCase = compose(userRepository)(db.models.Book);
+  const useCase = compose(bookRepository)(bookWebService());
 
-  const getUseCase = get({ userRepository: useCase });
-
-  router.use(authenticator.authenticate());
+  const getUseCase = get({ bookRepository: useCase });
 
   router.get('/', (req, res) => {
     getUseCase.all((req, res))
     .then(books => {
-      res.json({
+      return res.json({
         status: '000',
-        message: 'Success',
+        message: 'Successfully retrieve the book list',
         data: books
+      });
+    }).catch(error => {
+      return res.status(502).json({
+        status: '502',
+        message: 'Unable to retrieve the book list',
+        error: error.message
       });
     });
   });

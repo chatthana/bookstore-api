@@ -7,7 +7,7 @@ const OrderItem = Schema({
 
 const OrderSchema = Schema({
   guid: { type: String, unique: true },
-  user_id: Number,
+  user_id: String,
   items: [ OrderItem ]
 }, {
   versionKey: false
