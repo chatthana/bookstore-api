@@ -13,7 +13,7 @@ module.exports = ({ userRepository, orderRepository }) => {
       return orderRepository.getAll({ user_id: guid });
     }).then(orders => {
       const items = orders.map(order => order.items.map(item => item.book_id));
-      _user.orderedItems = _.uniq(_.flatten(items));
+      _user.books = _.uniq(_.flatten(items));
       return _user;
     }).catch(error => {
       throw new Error(error);
