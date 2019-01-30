@@ -5,6 +5,7 @@ module.exports = ({ userRepository, tokeniser }) => {
     return new Promise(async (resolve, reject) => {
       try {
         const { username, password } = requestBody;
+
         const user = await userRepository.getOne({ username });
 
         const isPasswordValid = userRepository.validatePassword(password, user.passwordHash, user.passwordSalt);

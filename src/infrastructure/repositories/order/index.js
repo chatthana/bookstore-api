@@ -4,7 +4,7 @@ module.exports = model => {
   const getAll = (...args) => {
     return model.find(...args)
       .then(orders => {
-        return orders.map(order => toEnity(order));
+        return orders.map(order => toEntity(order));
       }).catch(error => {
         throw new Error(error);
       });

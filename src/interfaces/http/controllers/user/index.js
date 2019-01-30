@@ -16,7 +16,7 @@ module.exports = () => {
   const bookUseCase = compose(bookRepository)(bookWebService());
   const orderUseCase = compose(orderRepository)(db.models.Order);
 
-  const getUseCase = get({ userRepository: useCase });
+  const getUseCase = get({ userRepository: useCase, orderRepository: orderUseCase });
   const postUseCase = post({ userRepository: useCase });
   const destroyUseCase = destroy({ userRepository: useCase });
   const placeOrderUseCase = placeOrder({ orderRepository: orderUseCase, bookRepository: bookUseCase});
@@ -105,22 +105,13 @@ module.exports = () => {
  * /api/v1/users:
  *   post:
  *     tags:
- *       - Users
- *     description: Order endpoint
+ *       - users
+ *     description: User order endpoint
  *     security:
- *       - JWT: []
- *     parameters:
- *       - name: username
- *         required: true
- *         type: string
- *       - name: password
- *         required: true
- *         type: string
+ *       - Bearer: []
  *     responses:
  *       200:
  *         description: Token
- *         schema:
- *           type: array
  *       502:
  *         description: Error
  */
