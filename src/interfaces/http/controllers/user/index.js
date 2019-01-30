@@ -35,7 +35,7 @@ module.exports = () => {
  *     parameters:
  *      - in: body
  *        name: body
- *        description: User Body
+ *        description: UserBody
  *        required: true
  *     responses:
  *       200:
@@ -71,7 +71,7 @@ module.exports = () => {
  *       - Users
  *     description: Current user
  *     security:
- *       - JWT: []
+ *       - Bearer: []
  *     properties:
  *      username:
  *        type: string
@@ -130,7 +130,7 @@ module.exports = () => {
         return res.json({
           status: '000',
           message: 'Successfully placed the order',
-          price: response
+          data: response
         });
       }).catch(error => {
         return res.status(502).json({

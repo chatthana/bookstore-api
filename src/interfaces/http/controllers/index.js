@@ -7,7 +7,7 @@ module.exports = () => {
   // swagger definition
   const swaggerDefinition = {
     info: {
-      title: 'SCB Assignment API Explorer',
+      title: 'API Explorer',
       version: '1.0.0',
       description: 'Available REST Endpoints of RESTful API'
     },
