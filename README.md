@@ -96,4 +96,4 @@ For Redis, there is nothing fancy here. Just deploy it with docker-compose.yml f
 
 
 ### API Documentation
-Please check [a link](https://documenter.getpostman.com/view/3121519/RztmqoFq) for the documentation.
+Please check [this link](https://documenter.getpostman.com/view/3121519/RztmqoFq) for the documentation.
