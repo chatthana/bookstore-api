@@ -13,6 +13,21 @@ module.exports = () => {
 
   const postUseCase = post({ userRepository: useCase, tokeniser });
 
+  /**
+ * @swagger
+ * /api/v1/users:
+ *   get:
+ *     tags:
+ *       - Users
+ *     description: Current user
+ *     security:
+ *       - Bearer: []
+ *     responses:
+ *       200:
+ *         description: User information
+ *         schema:
+ *           type: array
+ */
   router.post('/', (req, res) => {
     postUseCase.validate({ requestBody: req.body })
     .then(response => {

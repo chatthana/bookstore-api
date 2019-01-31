@@ -53,8 +53,8 @@ module.exports = () => {
         message: 'Successfully created the user account'
       });
     }).catch(error => {
-      return res.status(502).json({
-        status: '502',
+      return res.status(400).json({
+        status: '400',
         message: 'Unable to create the user',
         error: error.message
       });
@@ -72,14 +72,9 @@ module.exports = () => {
  *     description: Current user
  *     security:
  *       - Bearer: []
- *     properties:
- *      username:
- *        type: string
- *      password:
- *        type: string
  *     responses:
  *       200:
- *         description: Token
+ *         description: User information
  *         schema:
  *           type: array
  */
@@ -92,8 +87,8 @@ module.exports = () => {
         data: user
       });
     }).catch(error => {
-      return res.status(502).json({
-        status: '502',
+      return res.status(400).json({
+        status: '400',
         message: 'Unable to read the user information',
         error: error.message
       });
@@ -105,41 +100,10 @@ module.exports = () => {
  * /api/v1/users:
  *   post:
  *     tags:
- *       - users
+ *       - Users
  *     description: User order endpoints (Based on requirement)
  *     security:
  *       - Bearer: []
- *     parameters:
- *       - name: email
- *         in: body
- *         required: true
- *         schema:
- *          type: string
- *       - name: username
- *         in: body
- *         required: true
- *         schema:
- *          type: string
- *       - name: name
- *         in: body
- *         required: true
- *         schema:
- *          type: string
- *       - name: surname
- *         in: body
- *         required: true
- *         schema:
- *           type: string
- *       - name: password
- *         in: body
- *         required: true
- *         schema:
- *          type: string
- *       - name: date_of_birth
- *         in: body
- *         required: true
- *         schema:
- *          type: string
  *     responses:
  *       200:
  *         description: Token
@@ -147,7 +111,7 @@ module.exports = () => {
  *         description: Error
  */
   router.post('/orders', (req, res) => {
-    placeOrderUseCase.placeOrder({ user_id: req.user.guid, book_ids: req.body.book_ids })
+    placeOrderUseCase.placeOrder({ user_id: req.user.guid, orders: req.body.orders })
       .then(response => {
         return res.json({
           status: '000',
@@ -155,8 +119,8 @@ module.exports = () => {
           data: response
         });
       }).catch(error => {
-        return res.status(502).json({
-          status: '502',
+        return res.status(400).json({
+          status: '400',
           message: 'Failed to place the order',
           error: error.message
         })
@@ -189,8 +153,8 @@ module.exports = () => {
         message: 'Successfully deleted the current user. You will no longer be able to use this account'
       });
     }).catch(error => {
-      return res.status(502).json({
-        status: '502',
+      return res.status(400).json({
+        status: '400',
         message: 'Unable to delete the current user',
         error: error.message
       });

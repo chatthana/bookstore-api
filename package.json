@@ -16,6 +16,7 @@
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "ramda": "^0.26.1",
+    "redis": "^2.8.0",
     "swagger-jsdoc": "^3.2.6",
     "tcomb": "^3.2.29",
     "uuid": "^3.3.2",
@@ -33,14 +34,13 @@
     "npm-check-updates": "2.14.2",
     "npx": "10.2.0",
     "semantic-release": "15.4.1",
+    "sinon": "^7.2.3",
+    "sinon-chai": "^3.3.0",
     "travis-deploy-once": "5.0.0"
   },
   "scripts": {
     "start": "node index.js",
-    "test": "npm run test:cov",
-    "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
-    "test:cov": "cross-env NODE_PATH=. NODE_ENV=test istanbul cover node_modules/mocha/bin/_mocha -- --exit",
-    "test:specs": "cross-env NODE_PATH=. NODE_ENV=test mocha --exit"
+    "test": "mocha"
   },
   "standard": {
     "ignore": [

@@ -6,7 +6,7 @@ module.exports = ({ bookRepository }) => {
     .then(() => {
       return bookRepository.getAll();
     }).then(books => {
-      return transferSort(ens);
+      return transferSort(books);
     }).catch(error => {
       throw new Error(error);
     });
