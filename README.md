@@ -71,6 +71,18 @@ The default target of MongoDB instance is localhost:37107 which expects Dockeris
 you are free to change the "mongo --port 37017" port option to your preferred port or you can even add "--host <URL>" to connect to
 the remote database
 
+In case if you want to create your own database and collection mannually do the following
+
+- Start MongoDB
+- Create a database named "bookstore-api
+- Create two collections named "users" and "orders"
+
+```bash
+use bookstore-api
+db.createCollection('users')
+db.createCollection('orders')
+```
+
 Note: The unit testing module is not yet complete and the API documentation (Swagger w/ Open API) is under construction
 
 ### Utilities for Docker users
