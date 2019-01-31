@@ -31,3 +31,8 @@ Order and User entities are persisted in MongoDB and the Mongoose model is respo
 However, the Book entities are managed using the remote service which is also managed by the repository.
 
 Note: The unit testing module is not yet complete and the API documentation (Swagger w/ Open API) is under construction
+
+### Utilities for Docker users
+The docker-compose.yml containing the definition for MongoDB is provided in this repository and Docker users can efficiently use it to aviod deploying MongoDB manually on their machines.
+
+Please note that the volume is also bound within the root directory with the directory named as "data"

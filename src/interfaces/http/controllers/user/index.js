@@ -106,9 +106,40 @@ module.exports = () => {
  *   post:
  *     tags:
  *       - users
- *     description: User order endpoint
+ *     description: User order endpoints (Based on requirement)
  *     security:
  *       - Bearer: []
+ *     parameters:
+ *       - name: email
+ *         in: body
+ *         required: true
+ *         schema:
+ *          type: string
+ *       - name: username
+ *         in: body
+ *         required: true
+ *         schema:
+ *          type: string
+ *       - name: name
+ *         in: body
+ *         required: true
+ *         schema:
+ *          type: string
+ *       - name: surname
+ *         in: body
+ *         required: true
+ *         schema:
+ *           type: string
+ *       - name: password
+ *         in: body
+ *         required: true
+ *         schema:
+ *          type: string
+ *       - name: date_of_birth
+ *         in: body
+ *         required: true
+ *         schema:
+ *          type: string
  *     responses:
  *       200:
  *         description: Token
