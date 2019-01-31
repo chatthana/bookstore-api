@@ -1,3 +1,0 @@
-spec/setup.js
-spec/**/*.spec.js
---recursive

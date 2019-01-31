@@ -3,7 +3,7 @@ module.exports = {
   apiVersion: 1,
   db: {
     mongodb: {
-      uri: 'mongodb://localhost:27017/bookstore-api'
+      uri: 'mongodb://localhost:37017/bookstore-api'
     }
   },
   authentication: {

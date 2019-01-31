@@ -7,10 +7,10 @@ describe('Route => Authentication (Login)', () => {
 
   const URI = `/api/v${config.apiVersion}`;
 
-  const userUseCase = compose(repository(userRepository), models)('users');
+  const userUseCase = compose(repository(userRepository), models)('User');
 
   beforeEach(done => {
-    userUseCase.remove({})
+    userUseCase.destroy({})
     .then(() => {
       userUseCase.create({
         name: 'test001',

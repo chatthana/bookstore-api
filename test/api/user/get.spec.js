@@ -1,6 +1,8 @@
 const { compose } = require('ramda');
-const { models, repository } = require('test/factory');
+const { models, repository } = require('../../factory');
 const userRepository = require('../../../src/infrastructure/repositories/user');
+
+console.log(models('User'), 'Model');
 
 describe('GET Current User', () => {
   const BASE_URI = `/api/v${config.version}`;
@@ -8,7 +10,9 @@ describe('GET Current User', () => {
   const UserUseCase = compose(
     repository(userRepository),
     models
-  )('users');
+  )('User');
+
+  console.log(UserUseCase, 'use case');
 
   const tokeniser = app.resolve('tokeniser');
   let token;
@@ -16,7 +20,7 @@ describe('GET Current User', () => {
   beforeEach((done) => {
     // we need to add user before we can request our token
     UserUseCase
-      .destroy({where: {}})
+      .destroy({})
       .then(() =>
         UserUseCase.create({
           name: 'test001',
