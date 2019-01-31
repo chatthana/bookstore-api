@@ -1,4 +1,4 @@
-const { transferSort } = require('./helper');
+const { transferSort } = require('../../infrastructure/utils/book');
 
 module.exports = ({ bookRepository }) => {
   const all = () => Promise
@@ -6,7 +6,7 @@ module.exports = ({ bookRepository }) => {
     .then(() => {
       return bookRepository.getAll();
     }).then(books => {
-      return transferSort(books);
+      return transferSort(ens);
     }).catch(error => {
       throw new Error(error);
     });
