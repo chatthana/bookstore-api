@@ -24,9 +24,10 @@ const sortAlphabetically = entities => {
 };
 
 const transferSort = entities => {
+  console.log(entities.length, 'TRANSFER');
   const nonDup = removeDuplicates(entities);
   const recommended = nonDup.filter(elem => {
-    if (elem.is_recommended === undefined || elem.is_recommended === true) {
+    if (elem.is_recommended === true) {
       return true;
     }
     return false;

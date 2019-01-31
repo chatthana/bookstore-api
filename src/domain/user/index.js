@@ -10,7 +10,8 @@ const User = t.struct({
   email: t.String,
   passwordHash: t.maybe(t.String),
   passwordSalt: t.maybe(t.String),
-  date_of_birth: t.String
+  date_of_birth: t.String,
+  orderedBooks: t.maybe(t.Array)
 });
 
 module.exports = compose(cleaned, User);

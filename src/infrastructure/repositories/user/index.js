@@ -6,6 +6,7 @@ module.exports = model => {
   const getOne = (...args) => {
     return model.findOne(...args)
       .then(user => {
+        if (!user) throw new Error('Unable to find the user');
         return toEntity(user);
       }).catch(error => {
         throw new Error(error);
@@ -22,7 +23,7 @@ module.exports = model => {
   }
 
   const destroy = (...args) => {
-    return model.remove(...args);
+    return model.deleteMany(...args);
   }
 
   const validatePassword = (password, encodedPassword, salt) =>

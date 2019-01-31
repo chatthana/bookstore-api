@@ -14,6 +14,8 @@ You need to have local or remote MongoDB instance running to serve the API. The
 default configuration of this API is located at config folder and the config/index.js
 file is bootstrapped in the IoC container which will be described below
 
+You also need Redis to cache the books which are retrieved via external web services
+
 ## How does this API works?
 By running
 
@@ -23,7 +25,32 @@ yarn start
 
 The API will start on the default port which is 3250.
 
+By running
+
+```bash
+yarn test
+```
+
+You will perform some unit tests priovided within the repository here
+
 Please note that most of the dependencies required in submodules are injected using Awilix as the main IoC container.
+
+### Basic Usage
+Based on the requirement given by SCB, all of the opeations are performed through secured communication. In this case we use
+JWT with asymetric keys (RS256). Thus, in order to
+
+- Get the current user (via <BASE_URL>/api/v1/users [GET])
+- Order the books (via <BASE_URL>/api/v1/users/orders [POST])
+- Delete the current user (via <BASE_URL>/api/v1/users [DELETE])
+
+You must parse the Authorization with Bearer token obtained from the path <BASE_URL>/api/v1/login [POST]
+
+For the rest of the endpoints including
+
+- Books endpoint (via <BASE_URL>/api/v1/books) [GET]
+- Create new user (via <BASE_URL>/api/v1/users) [POST]
+
+You can invoke the endpoint without the need to parse the token
 
 ### Note on persistence
 Order and User entities are persisted in MongoDB and the Mongoose model is responsible for accessing the persistent layer and this layer is handled by the repositories
@@ -47,6 +74,10 @@ the remote database
 Note: The unit testing module is not yet complete and the API documentation (Swagger w/ Open API) is under construction
 
 ### Utilities for Docker users
-The docker-compose.yml containing the definition for MongoDB is provided in this repository and Docker users can efficiently use it to aviod deploying MongoDB manually on their machines.
+The docker-compose.yml containing the definition for MongoDB is provided in this repository and Docker users can efficiently use it to aviod deploying MongoDB and Redis manually on their machines.
 
-Please note that the volume is also bound within the root directory with the directory named as "data"
+### MongoDB
+Please note that the volume for MongoDB is also bound within the root directory with the directory named as "data"
+
+#### Redis
+For Redis, there is nothing fancy here. Just deploy it with docker-compose.yml file

@@ -12,7 +12,7 @@ module.exports = () => {
       description: 'Available REST Endpoints of RESTful API'
     },
     host: `localhost:3250`,
-    basePath: '/',
+    basePath: '/api/v1',
     schemes: ['http'],
     securityDefinitions: {
       Bearer: {
@@ -41,20 +41,6 @@ module.exports = () => {
    *     description: Unauthorized
    *   BadRequest:
    *     description: BadRequest / Invalid Input
-   */
-
-  /**
-   * @swagger
-   * /:
-   *   get:
-   *     tags:
-   *       - Status
-   *     description: Returns API status
-   *     produces:
-   *       - application/json
-   *     responses:
-   *       200:
-   *         description: API Status
    */
   router.get('/', (req, res) => {
     return res.json({status: 'API working'})
