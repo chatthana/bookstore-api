@@ -3,7 +3,7 @@ module.exports = {
   apiVersion: 1,
   db: {
     mongodb: {
-      uri: 'mongodb://localhost:27017/bookstore-api'
+      uri: 'mongodb://localhost:37017/bookstore-api'
     }
   },
   authentication: {
@@ -17,7 +17,7 @@ module.exports = {
   },
   cache: {
     redis: {
-      uri: 'redis://localhost:6379'
+      uri: 'redis://localhost:6370'
     }
   }
 }

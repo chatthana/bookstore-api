@@ -5,8 +5,6 @@ services:
     container_name: mongodb
     ports:
       - 37017:27017
-    volumes:
-      - ./data:/data/db
     command: mongod
   redis:
     image: redis:latest
