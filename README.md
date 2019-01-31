@@ -30,6 +30,20 @@ Order and User entities are persisted in MongoDB and the Mongoose model is respo
 
 However, the Book entities are managed using the remote service which is also managed by the repository.
 
+#### MongoDB Setup Guide
+No matter you use your own local Mongod instance or the provided docker-compose file. The database setup is required.
+You can use the shell script named "mongoInit.sh" to setup the database and related collections by simply running
+
+```bash
+root$twicetagram:~$ chmod +x ./mongoInit.sh
+root$twicetagram:~$ ./mongoInit.sh
+```
+
+#### Custom MongoDB location for initialisation
+The default target of MongoDB instance is localhost:37107 which expects Dockerised version of the database to be running. However
+you are free to change the "mongo --port 37017" port option to your preferred port or you can even add "--host <URL>" to connect to
+the remote database
+
 Note: The unit testing module is not yet complete and the API documentation (Swagger w/ Open API) is under construction
 
 ### Utilities for Docker users
