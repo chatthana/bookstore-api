@@ -35,6 +35,12 @@ You will perform some unit tests priovided within the repository here
 
 Please note that most of the dependencies required in submodules are injected using Awilix as the main IoC container.
 
+### Database Design
+The schema here is very simple as the project consumes NoSQL database. If you would like to inspect the schema of the database, please check the src/infrastructure/database/models directory and you will get the ideas
+
+### Database (Persistent Entities) to Domain Entities
+This is handled by tcomb for typed function utilisation. The domain model is just a pure function without knowledge of the outside world. The mapping is done in repositories
+
 ### Basic Usage
 Based on the requirement given by SCB, all of the opeations are performed through secured communication. In this case we use
 JWT with asymetric keys (RS256). Thus, in order to
@@ -51,6 +57,9 @@ For the rest of the endpoints including
 - Create new user (via <BASE_URL>/api/v1/users) [POST]
 
 You can invoke the endpoint without the need to parse the token
+
+#### Note about the private/public key
+Check the keys folder for the pre-generated key in base64 and pem formats.
 
 ### Note on persistence
 Order and User entities are persisted in MongoDB and the Mongoose model is responsible for accessing the persistent layer and this layer is handled by the repositories
