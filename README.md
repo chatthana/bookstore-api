@@ -83,7 +83,15 @@ db.createCollection('users')
 db.createCollection('orders')
 ```
 
-Note: The unit testing module is not yet complete and the API documentation (Swagger w/ Open API) is under construction
+### About the configuration
+The file config/index.js describes basic configuration for the project. There are however two interestin variables that you should check out including
+
+1. MongoDB URI - Default to mongodb://localhost:37017
+2. Redis URI - Default to redis://localhost:6370
+
+These are values used by libraries in the infrastructure layer during Awilix initialisation. The default value provided is the value of the hosts and ports used by the containers created by provided docker-compose.yml file.
+
+If you need to change to use your local MongoDB and Redis or remote instances, just switch the values in this file
 
 ### Utilities for Docker users
 The docker-compose.yml containing the definition for MongoDB is provided in this repository and Docker users can efficiently use it to aviod deploying MongoDB and Redis manually on their machines.
@@ -92,8 +100,7 @@ The docker-compose.yml containing the definition for MongoDB is provided in this
 Please note that the volume for MongoDB is also bound within the root directory with the directory named as "data"
 
 #### Redis
-For Redis, there is nothing fancy here. Just deploy it with docker-compose.yml file
-
+For Redis, there is nothing fancy here. Just deploy it with docker-compose.yml file.
 
 ### API Documentation
 Please check [this link](https://documenter.getpostman.com/view/3121519/RztmqoFq) for the documentation.
