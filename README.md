@@ -112,4 +112,4 @@ Please note that the volume for MongoDB is also bound within the root directory 
 For Redis, there is nothing fancy here. Just deploy it with docker-compose.yml file.
 
 ### API Documentation
-Please check [this link](https://documenter.getpostman.com/view/3121519/RztmqoFq) for the documentation.
+Please check [this link](https://documenter.getpostman.com/view/3121519/RztmrUDm) for the documentation.
