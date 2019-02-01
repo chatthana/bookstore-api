@@ -4,6 +4,8 @@ module.exports = ({ userRepository }) => {
       .resolve()
       .then(() => {
         return userRepository.destroy({ guid })
+      }).catch(error => {
+        throw new Error(error);
       });
   }
 
