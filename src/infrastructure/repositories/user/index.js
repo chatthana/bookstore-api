@@ -21,6 +21,13 @@ module.exports = model => {
       });
   }
 
+  const update = (...args) => {
+    return model.update(...args)
+      .catch(error => {
+        throw new Error(error);
+      })
+  }
+
   const destroy = (...args) => {
     return model.deleteMany(...args).catch(error => {
       throw new Error(error);
@@ -33,6 +40,7 @@ module.exports = model => {
   return {
     getOne,
     create,
+    update,
     destroy,
     validatePassword
   }

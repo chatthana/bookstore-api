@@ -8,7 +8,8 @@ const UserSchema = Schema({
   email: String,
   passwordHash: String,
   passwordSalt: String,
-  date_of_birth: String
+  date_of_birth: String,
+  books: [Number]
 }, {
   versionKey: false
 });

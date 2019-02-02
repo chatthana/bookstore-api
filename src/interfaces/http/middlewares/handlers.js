@@ -6,10 +6,10 @@ exports.notFoundHandler = (req, res, next) => {
 };
 
 exports.exceptionHandler = (err, req, res, next) => {
+  console.log(err.stack);
   if(!err.statusCode) err.statusCode = 500;
   return res.status(err.statusCode).json({
     status: '572',
-    description: 'Internal or untracked errors',
-    message: err.message
+    message: 'Internal or untracked errors',
   });
 };

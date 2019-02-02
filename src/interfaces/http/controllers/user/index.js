@@ -19,7 +19,11 @@ module.exports = () => {
   const getUseCase = get({ userRepository: useCase, orderRepository: orderUseCase });
   const postUseCase = post({ userRepository: useCase });
   const destroyUseCase = destroy({ userRepository: useCase });
-  const placeOrderUseCase = placeOrder({ orderRepository: orderUseCase, bookRepository: bookUseCase});
+  const placeOrderUseCase = placeOrder({
+    userRepository: useCase,
+    orderRepository: orderUseCase,
+    bookRepository: bookUseCase
+  });
   
   /**
  * @swagger
