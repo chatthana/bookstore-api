@@ -43,4 +43,39 @@ describe('Application => User => POST', () => {
       expect(user.date_of_birth).that.equal(body.date_of_birth);
     })
   });
+
+  describe('Fail on rejection', () => {
+
+    const body = {
+      "email": "pattamawan_lookpla@tripetch-isuzu.com",
+      "username": "lookpla001",
+      "name": "Pattamawan",
+      "surname": "Sangkaphan",
+      "password": "secret",
+      "date_of_birth": "1989/07/15"
+    };
+
+    beforeEach(() => {
+      const mockedRepository = {
+        create: () => Promise.reject('Can not create the user')
+      };
+      
+      useCase = postUseCase({
+        userRepository: mockedRepository
+      });
+    });
+
+    it('Should throw on creation', async () => {
+      let _err;
+
+      try {
+        const users = await useCase.create({ requestBody: body });
+      } catch (exception) {
+        _err = exception.message;
+      }
+
+      expect(_err).to.equal('Can not create the user');
+    });
+    
+  });
 });

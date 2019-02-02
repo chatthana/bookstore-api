@@ -13,13 +13,6 @@ module.exports = ({ config, router, authenticator }) => {
   app.use(notFoundHandler);
   app.use(exceptionHandler);
 
-  // app.use((err, req, res, next) => {
-  //   if (!err.statusCode) err.statusCode = 500;
-  //   return res.status(404).json({
-  //     message: 'Not found'
-  //   });
-  // });
-
   return {
     app,
     run: () => Promise.resolve().then(() => {

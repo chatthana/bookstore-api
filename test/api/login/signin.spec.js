@@ -43,6 +43,23 @@ describe('Signin', () => {
 
       const response = await LoginUseCase.validate({ requestBody: body });
       expect(response).to.be.not.null;
+    });
+
+    it('Should return Unauthorised on invalid request', async () => {
+      const body = {
+        username: userCreationRequest.username,
+        password: 'secretxxx'
+      };
+
+      let _err;
+
+      try {
+        const response = await LoginUseCase.validate({ requestBody: body });
+      } catch(exception) {
+        _err = exception.message;
+      }
+
+      expect(_err).to.equal('Invalid credentials, please try again with different ones');
     })
-  })
+  });
 })
