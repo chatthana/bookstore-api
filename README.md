@@ -1,5 +1,5 @@
 # Bookstore API
-This is a RESTful API built for SCB.
+This is a RESTful API built with Clean Architecture and Domain Driven Design.
 
 ## Architecture
 This project uses Domain-Driven-Design approach. Thus, the application (API) is splitted into different layers including
@@ -108,7 +108,7 @@ The docker-compose.yml containing the definition for MongoDB is provided in this
 ### MongoDB
 Please note that the volume for MongoDB is also bound within the root directory with the directory named as "data"
 
-#### Redis
+### Redis
 For Redis, there is nothing fancy here. Just deploy it with docker-compose.yml file.
 
 ### API Documentation
