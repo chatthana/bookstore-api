@@ -1,5 +1,6 @@
 const express = require('express');
 const logger = require('morgan');
+const { notFoundHandler, exceptionHandler } = require('./middlewares/handlers');
 
 module.exports = ({ config, router, authenticator }) => {
   const app = express();
@@ -9,11 +10,15 @@ module.exports = ({ config, router, authenticator }) => {
   app.use(express.static('public'));
   app.use(router);
 
-  app.use((req, res, next) => {
-    return res.status(404).json({
-      message: 'Not found'
-    });
-  });
+  app.use(notFoundHandler);
+  app.use(exceptionHandler);
+
+  // app.use((err, req, res, next) => {
+  //   if (!err.statusCode) err.statusCode = 500;
+  //   return res.status(404).json({
+  //     message: 'Not found'
+  //   });
+  // });
 
   return {
     app,
